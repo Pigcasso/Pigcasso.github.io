@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-[Details at bottom](./pipphotos/0.13.0/details_at_bottom.md)
+[果仁相册](./pipphotos/index.md)
 
 You can use the [editor on GitHub](https://github.com/Pigcasso/Pigcasso.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
