@@ -12,4 +12,6 @@
 
 第二步，关闭在屏幕底部显示开关
 
-<img src="../imgs/Screenshot_2019-05-07-00-04-32-997_果仁相册.png" width="270"/><img src="../imgs/Screenshot_2019-05-06-23-59-14-483_果仁相册.png" width="270"/>
+<img src="../imgs/Screenshot_2019-05-07-00-04-32-997_果仁相册.png" width="270"/>
+
+<img src="../imgs/Screenshot_2019-05-06-23-59-14-483_果仁相册.png" width="270"/>
