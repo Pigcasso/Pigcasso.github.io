@@ -10,15 +10,15 @@
 
 2. 在设置页面找到"更多功能”选项，点击"更多功能"
 
-   <img src="../imgs/Screenshot_2019-05-17-18-15-09-068_果仁相册.png" width=270/>
+   <img src="../imgs/Screenshot_2019-05-17-18-15-09-068_果仁相册.png" width="270"/>
 
 3. 点击"报告错误"
 
-   <img src="../imgs/Screenshot_2019-05-17-18-17-37-519_果仁相册.png" width=270/>
+   <img src="../imgs/Screenshot_2019-05-17-18-17-37-519_果仁相册.png" width="270"/>
 
 4. 选择邮箱并发送邮件即可
 
    如果您有什么想跟我说的，也可以写下来😅
 
-   <img src="../imgs/Screenshot_2019-05-17-18-17-47-699_果仁相册.png" width=270/>
+   <img src="../imgs/Screenshot_2019-05-17-18-17-47-699_果仁相册.png" width="270"/>
 
