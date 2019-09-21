@@ -260,6 +260,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pigcasso.github.io/blog/2019/09/21/hexo作为子目录部署到GitHub-Pages/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhu Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Now Or Never!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/09/21/hexo作为子目录部署到GitHub-Pages/" itemprop="url">Hexo 作为子目录部署到 GitHub Pages</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T14:07:28+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文参考了 <a href="https://blog.fundebug.com/2017/05/18/deploy-hexo-on-cloud/" title="将Hexo博客部署到云主机" target="_blank" rel="noopener">将Hexo博客部署到云主机</a></p>
+<p>我的 Hexo 博客目录：<code>xxx/blog</code></p>
+<p>我的本地 GitHub Pages 目录：<code>xxx/Pigcasso.github.io</code></p>
+<p>我打算把 Hexo 博客部署到 GitHub Pages 的子目录下，就像这样：<a href="https://pigcasso.github.io/blog">https://pigcasso.github.io/blog</a></p>
+<h3 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h3><p>创建 Git 裸仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir directory/blog.git &amp;&amp; <span class="built_in">cd</span> xxx/blog.git</span><br><span class="line">git init --bare</span><br></pre></td></tr></table></figure>
+<p>配置 Hooks 脚本</p>
+<p><strong>post-receive</strong>脚本将在<strong>blog.git</strong>仓库接收到 push 时执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ./hooks/post-receive</span><br></pre></td></tr></table></figure>
+<p>脚本非常简单，删除原有的 <code>xxx/Pigcasso.github.io/blog</code>目录，然后从 blog.git 仓库 clone 新的博客静态文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">rm -rf xxx/blog</span><br><span class="line">git <span class="built_in">clone</span> xxx/blog.git xxx/Pigcasso.github.io/blog</span><br></pre></td></tr></table></figure>
+<p>给 <strong>post-receive</strong> 脚本执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./hooks/post-receive</span><br></pre></td></tr></table></figure>
+<h3 id="部署-Hexo-博客"><a href="#部署-Hexo-博客" class="headerlink" title="部署 Hexo 博客"></a>部署 Hexo 博客</h3><h4 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改 _config.yml"></a>修改 _config.yml</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="attr">https://pigcasso.github.io</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/blog/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">xxx/blog.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：不要忘了修改 url 和 root，否则部署到 GitHub Pages 之后不能显示主题样式</strong></p>
+<p><strong>参考文章：</strong><a href="https://blog.csdn.net/qq_29347295/article/details/79005154" title="常见错误8-搭建hexo，本地server成功，部署到github上之后不能显示主题样式" target="_blank" rel="noopener">常见错误8-搭建hexo，本地server成功，部署到github上之后不能显示主题样式</a></p>
+<h4 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h4><p>hexo 生成新的静态文件，然后通过 git 将其同步到 <code>xxx/blog.git</code>仓库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h4 id="推送到-GitHub-Pages"><a href="#推送到-GitHub-Pages" class="headerlink" title="推送到 GitHub Pages"></a>推送到 GitHub Pages</h4><p>切换到 <code>xxx/Pigcasso.github.io</code> 目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add /blog</span><br><span class="line">git commit -m <span class="string">"Your commit message"</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>稍等片刻，打开 <a href="https://pigcasso.github.io/blog">https://pigcasso.github.io/blog</a> 即可看到劳动成果</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pigcasso.github.io/blog/2018/04/24/summary-git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1551,126 +1691,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pigcasso.github.io/blog/2018/03/23/summarize-visual-studio-code/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhu Liang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Now Or Never!!">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/03/23/summarize-visual-studio-code/" itemprop="url">Visual Studio Code整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T00:00:00+08:00">
-                2018-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="快捷键速查表"><a href="#快捷键速查表" class="headerlink" title="快捷键速查表"></a>快捷键速查表</h1><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><p><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf" target="_blank" rel="noopener">https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1721,7 +1741,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1743,7 +1763,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

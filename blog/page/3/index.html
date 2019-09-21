@@ -260,6 +260,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pigcasso.github.io/blog/2018/02/28/summarize-gradle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhu Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Now Or Never!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2018/02/28/summarize-gradle/" itemprop="url">Gradle 3.+ 知识点整理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Gradle/" itemprop="url" rel="index">
+                    <span itemprop="name">Gradle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用新依赖项配置"><a href="#使用新依赖项配置" class="headerlink" title="使用新依赖项配置"></a>使用新依赖项配置</h1><table>
+<thead>
+<tr>
+<th>新配置</th>
+<th>已弃用配置</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>implementation</td>
+<td>compile</td>
+<td>依赖项在编译时对模块可用，并且仅在运行时对模块的消费者可用。 对于大型多项目构建，使用 implementation 而不是 api/compile 可以显著缩短构建时间，因为它可以减少构建系统需要重新编译的项目量。 大多数应用和测试模块都应使用此配置。</td>
+</tr>
+<tr>
+<td>api</td>
+<td>compile</td>
+<td>依赖项在编译时对模块可用，并且在编译时和运行时还对模块的消费者可用。 此配置的行为类似于 compile（现在已弃用），一般情况下，您应当仅在库模块中使用它。 应用模块应使用 implementation，除非您想要将其 API 公开给单独的测试模块。</td>
+</tr>
+<tr>
+<td>compileOnly</td>
+<td>provided</td>
+<td>依赖项仅在编译时对模块可用，并且在编译或运行时对其消费者不可用。 此配置的行为类似于 provided（现在已弃用）。</td>
+</tr>
+<tr>
+<td>runtimeOnly</td>
+<td>apk</td>
+<td>依赖项仅在运行时对模块及其消费者可用。 此配置的行为类似于 apk（现在已弃用）。</td>
+</tr>
+</tbody>
+</table>
+<p>参考：<a href="https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html" target="_blank" rel="noopener">迁移到 Android Plugin for Gradle 3.0.0</a></p>
+<h1 id="API-变更"><a href="#API-变更" class="headerlink" title="API 变更"></a>API 变更</h1><h2 id="变体输出"><a href="#变体输出" class="headerlink" title="变体输出"></a>变体输出</h2><p>使用 Variant API 操作变体输出在新插件中已不再受支持。 不过，这种方式仍然适用于简单任务，例如在构建时更改 APK 名称，如下所示：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// If you use each() to iterate through the variant objects,</span></span><br><span class="line"><span class="comment">// you need to start using all(). That's because each() iterates</span></span><br><span class="line"><span class="comment">// through only the objects that already exist during configuration time—</span></span><br><span class="line"><span class="comment">// but those object don't exist at configuration time with the new model.</span></span><br><span class="line"><span class="comment">// However, all() adapts to the new model by picking up object as they are</span></span><br><span class="line"><span class="comment">// added during execution.</span></span><br><span class="line">android.applicationVariants.all &#123; variant -&gt;</span><br><span class="line">    variant.outputs.all &#123;</span><br><span class="line">        outputFileName = <span class="string">"$&#123;variant.name&#125;-$&#123;variant.versionName&#125;.apk"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html" target="_blank" rel="noopener">迁移到 Android Plugin for Gradle 3.0.0</a></p>
+<h1 id="配置构建变体"><a href="#配置构建变体" class="headerlink" title="配置构建变体"></a>配置构建变体</h1><p>参考：<a href="https://developer.android.com/studio/build/build-variants.html?hl=zh-cn" target="_blank" rel="noopener">https://developer.android.com/studio/build/build-variants.html?hl=zh-cn</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pigcasso.github.io/blog/2018/02/21/summarize-pip-photos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1235,7 +1412,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1257,7 +1434,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
