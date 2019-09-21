@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="目录{:toc}  获取所有包含图片的文件夹列表1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// 文件实体类data class PipFile(var absolutePath: String,                   val nam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="果仁相册知识点整理">
+<meta property="og:url" content="http://zhuliang.io/2018/02/21/summarize-pip-photos/index.html">
+<meta property="og:site_name" content="Now Or Never!!">
+<meta property="og:description" content="目录{:toc}  获取所有包含图片的文件夹列表1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// 文件实体类data class PipFile(var absolutePath: String,                   val nam">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://zhuliang.io/2018/02/21/images/屏幕快照%202018-03-09%20下午4.30.44.png">
+<meta property="og:updated_time" content="2018-04-08T01:09:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="果仁相册知识点整理">
+<meta name="twitter:description" content="目录{:toc}  获取所有包含图片的文件夹列表1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// 文件实体类data class PipFile(var absolutePath: String,                   val nam">
+<meta name="twitter:image" content="http://zhuliang.io/2018/02/21/images/屏幕快照%202018-03-09%20下午4.30.44.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhuliang.io/2018/02/21/summarize-pip-photos/"/>
+
+
+
+
+
+  <title>果仁相册知识点整理 | Now Or Never!!</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Now Or Never!!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuliang.io/2018/02/21/summarize-pip-photos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhu Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Now Or Never!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">果仁相册知识点整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-21T00:00:00+08:00">
+                2018-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h1 id="获取所有包含图片的文件夹列表"><a href="#获取所有包含图片的文件夹列表" class="headerlink" title="获取所有包含图片的文件夹列表"></a>获取所有包含图片的文件夹列表</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件实体类</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">PipFile</span></span>(<span class="keyword">var</span> absolutePath: String,</span><br><span class="line">                   <span class="keyword">val</span> name: String,</span><br><span class="line">                   <span class="keyword">val</span> lastModified: <span class="built_in">Long</span>,</span><br><span class="line">                   <span class="keyword">val</span> contentLength: <span class="built_in">Long</span>,</span><br><span class="line">                   <span class="keyword">val</span> isDirectory: <span class="built_in">Boolean</span>) &#123;</span><br><span class="line">  	<span class="keyword">constructor</span>(file: File) : <span class="keyword">this</span>(file.absolutePath, </span><br><span class="line">                                   file.name, </span><br><span class="line">                                   file.lastModified(), </span><br><span class="line">                                   file.length(),</span><br><span class="line">                                   file.isDirectory)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相册实体类</span></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">PipAlbum</span></span>(<span class="keyword">val</span> cover: PipFile,</span><br><span class="line">                    <span class="keyword">val</span> directory: PipFile,</span><br><span class="line">                    <span class="keyword">val</span> count: <span class="built_in">Int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取所有包含图片的文件夹列表</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">listAlbumsInternal</span><span class="params">()</span></span>: List&lt;PipAlbum&gt; &#123;</span><br><span class="line">    <span class="comment">// 外部存储Uri</span></span><br><span class="line">    <span class="keyword">val</span> uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI</span><br><span class="line">    <span class="keyword">val</span> projection = arrayOf(MediaStore.Images.ImageColumns.DATA)</span><br><span class="line">    <span class="keyword">val</span> selection = MediaStore.Images.ImageColumns.MIME_TYPE + <span class="string">" = ? or "</span> +</span><br><span class="line">            MediaStore.Images.ImageColumns.MIME_TYPE + <span class="string">"=?"</span></span><br><span class="line">    <span class="keyword">val</span> selectionArgs = arrayOf(<span class="string">"image/jpeg"</span>, <span class="string">"image/png"</span>)</span><br><span class="line">    <span class="keyword">val</span> sortOrder = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">val</span> cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, sortOrder)</span><br><span class="line">    <span class="keyword">val</span> dirPaths = HashSet&lt;String&gt;()</span><br><span class="line">    <span class="keyword">val</span> albums = ArrayList&lt;PipAlbum&gt;()</span><br><span class="line">    <span class="keyword">while</span> (cursor.moveToNext()) &#123;</span><br><span class="line">        <span class="keyword">val</span> filepath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))</span><br><span class="line">        <span class="keyword">val</span> parentFile = File(filepath).parentFile ?: <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">val</span> parentPath = parentFile.absolutePath</span><br><span class="line">        <span class="keyword">if</span> (dirPaths.contains(parentPath)) &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        dirPaths.add(parentPath)</span><br><span class="line">        <span class="keyword">val</span> picSize = parentFile.list(ImageFileFilter()).size</span><br><span class="line">        <span class="keyword">val</span> album = PipAlbum(PipFile(File(filepath)), PipFile(parentFile), picSize)</span><br><span class="line">        albums.add(album)</span><br><span class="line">    &#125;</span><br><span class="line">    cursor.close()</span><br><span class="line">    <span class="keyword">return</span> albums</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageFileFilter</span> : <span class="type">FilenameFilter &#123;</span></span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">accept</span><span class="params">(p0: <span class="type">File</span>?, name: <span class="type">String</span>?)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name!!.endsWith(<span class="string">".jpg"</span>, <span class="literal">true</span>)</span><br><span class="line">                || name.endsWith(<span class="string">".jpeg"</span>, <span class="literal">true</span>)</span><br><span class="line">                || name.endsWith(<span class="string">"png"</span>, <span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p><a href="http://blog.csdn.net/lmj623565791/article/details/39943731" target="_blank" rel="noopener">Android 超高仿微信图片选择器</a> 这篇文章的 <code>getImages()</code> 方法</p>
+<h1 id="Fragment相关"><a href="#Fragment相关" class="headerlink" title="Fragment相关"></a>Fragment相关</h1><h2 id="在Fragment中监听Back键"><a href="#在Fragment中监听Back键" class="headerlink" title="在Fragment中监听Back键"></a>在Fragment中监听Back键</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResume</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onResume()</span><br><span class="line">    <span class="comment">// 捕获回退事件</span></span><br><span class="line">    <span class="keyword">if</span> (view == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    view!!.isFocusableInTouchMode = <span class="literal">true</span></span><br><span class="line">    view!!.requestFocus()</span><br><span class="line">    view!!.setOnKeyListener(&#123; _, keyCode, event -&gt;</span><br><span class="line">        <span class="keyword">if</span> (event.action == KeyEvent.ACTION_UP &amp;&amp; keyCode == KeyEvent.KEYCODE_BACK) &#123;</span><br><span class="line">            <span class="comment">// handle back button's click listener</span></span><br><span class="line">            <span class="keyword">if</span> (mMode == MODE_UPLOAD_CLOUD) &#123;</span><br><span class="line">                setMode(MODE_DEFAULT)</span><br><span class="line">                <span class="keyword">return</span><span class="symbol">@setOnKeyListener</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span><span class="symbol">@setOnKeyListener</span> <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<br><a href="https://stackoverflow.com/questions/5448653/how-to-implement-onbackpressed-in-fragments" target="_blank" rel="noopener">How to implement onBackPressed() in Fragments?</a></p>
+<h2 id="Fragment之间通信"><a href="#Fragment之间通信" class="headerlink" title="Fragment之间通信"></a>Fragment之间通信</h2><p>例如：AFragment接收BDialogFragment返回的结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在AFragment.java中启动BDialogFragment.java</span></span><br><span class="line">BDialogFragment fragment = <span class="keyword">new</span> BDialogFragment();</span><br><span class="line">fragment.setTargetFragment(<span class="keyword">this</span>, REQUEST_CODE)</span><br><span class="line">fragment.show(fragmentManager, <span class="string">"tag"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在AFragment.java中接收BDialogFragment.java返回的结果</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">  	<span class="keyword">if</span> (Activity.RESULT_OK == resultCode &amp;&amp; REQUEST_CODE == requestCode) &#123;</span><br><span class="line">        <span class="comment">// 解析 data</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BDialogFragment.java</span></span><br><span class="line">Fragment targetFragment = getTargetFragment();</span><br><span class="line"><span class="keyword">if</span> (targetFragment != <span class="keyword">null</span>) &#123;</span><br><span class="line">  	Intent data = <span class="keyword">new</span> Intent();</span><br><span class="line">    data.putExtra(Intent.EXTRA_TEXT, text);</span><br><span class="line">    targetFragment.onActivityResult(targetRequestCode, Activity.RESULT_OK, data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="OkHttp相关"><a href="#OkHttp相关" class="headerlink" title="OkHttp相关"></a>OkHttp相关</h1><h2 id="使用OkHttp为Request添加Basic-Authentication"><a href="#使用OkHttp为Request添加Basic-Authentication" class="headerlink" title="使用OkHttp为Request添加Basic Authentication"></a>使用OkHttp为Request添加Basic Authentication</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义拦截器</span></span><br><span class="line">inner <span class="class"><span class="keyword">class</span> <span class="title">BasicAuthInterceptor</span></span>(user: String, password: String) : Interceptor &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> credentials: String = Credentials.basic(user, password)</span><br><span class="line">    <span class="meta">@Throws(IOException::class)</span></span><br><span class="line">    <span class="keyword">override</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">intercept</span><span class="params">(chain: <span class="type">Interceptor</span>.<span class="type">Chain</span>)</span></span>: Response &#123;</span><br><span class="line">        <span class="keyword">val</span> request = chain.request()</span><br><span class="line">        <span class="keyword">val</span> authenticatedRequest = request.newBuilder()</span><br><span class="line">                .header(<span class="string">"Authorization"</span>, credentials).build()</span><br><span class="line">        <span class="keyword">return</span> chain.proceed(authenticatedRequest)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实例化OkHttp</span></span><br><span class="line"><span class="keyword">val</span> client: OkHttpClient</span><br><span class="line"><span class="keyword">val</span> builder = OkHttpClient.Builder()</span><br><span class="line">                .addInterceptor(BasicAuthInterceptor(userName, password))</span><br><span class="line">client = builder.build()</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p><a href="https://stackoverflow.com/questions/22490057/android-okhttp-with-basic-authentication" target="_blank" rel="noopener">Android OkHttp with Basic Authentication</a></p>
+<h2 id="使用OkHttp上传文件"><a href="#使用OkHttp上传文件" class="headerlink" title="使用OkHttp上传文件"></a>使用OkHttp上传文件</h2><p>上传文件使用的是<code>PUT</code>方法</p>
+<h3 id="不显示上传进度"><a href="#不显示上传进度" class="headerlink" title="不显示上传进度"></a>不显示上传进度</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Throws(IOException::class)</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">put</span><span class="params">(url: <span class="type">String</span>, src: <span class="type">File</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> rb = RequestBody.create(<span class="literal">null</span>, src)</span><br><span class="line">    <span class="keyword">val</span> request = Request.Builder()</span><br><span class="line">            .url(url)</span><br><span class="line">            .put(rb)</span><br><span class="line">            .build()</span><br><span class="line">  	<span class="comment">// 检查状态码</span></span><br><span class="line">    <span class="keyword">val</span> statusCode = response.code()</span><br><span class="line">  	<span class="comment">// 状态码在200到300之间表示上传成功</span></span><br><span class="line">	<span class="keyword">if</span> (statusCode &gt;= <span class="number">200</span> &amp;&amp; statusCode &lt; <span class="number">300</span>) &#123;</span><br><span class="line">    	<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="显示上传进度"><a href="#显示上传进度" class="headerlink" title="显示上传进度"></a>显示上传进度</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// kotlin 代码</span></span><br><span class="line"><span class="meta">@Throws(IOException::class)</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">put</span><span class="params">(url: <span class="type">String</span>, src: <span class="type">File</span>, listener: <span class="type">ProgressRequestListener</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> rb = ProgressRequestBody(<span class="literal">null</span>, src, listener)</span><br><span class="line">    <span class="keyword">val</span> request = Request.Builder()</span><br><span class="line">            .url(url)</span><br><span class="line">            .put(rb)</span><br><span class="line">            .build()</span><br><span class="line">    validateResponse(client.newCall(request).execute())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// java代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ProgressRequestListener</span> </span>&#123;</span><br><span class="line">    void onRequestProgress(long bytesWritten, long contentLength);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// java代码</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProgressRequestBody</span> <span class="title">extends</span> <span class="title">RequestBody</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MediaType mContentType;</span><br><span class="line">    <span class="keyword">private</span> File mFile;</span><br><span class="line">    <span class="keyword">private</span> ProgressRequestListener mListener;</span><br><span class="line">    <span class="keyword">public</span> ProgressRequestBody(MediaType contentType, File file, ProgressRequestListener listener) &#123;</span><br><span class="line">        mContentType = contentType;</span><br><span class="line">        mFile = file;</span><br><span class="line">        mListener = listener;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> MediaType contentType() &#123;</span><br><span class="line">        <span class="keyword">return</span> mContentType;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> long contentLength() throws IOException &#123;</span><br><span class="line">        <span class="keyword">return</span> mFile.length();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> void writeTo(BufferedSink sink) throws IOException &#123;</span><br><span class="line">        Source source = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            source = Okio.source(mFile);</span><br><span class="line">            long byteCount = <span class="number">0</span>;</span><br><span class="line">            long read;</span><br><span class="line">            <span class="keyword">final</span> long contentLength = contentLength();</span><br><span class="line">            <span class="keyword">while</span> ((read = source.read(sink.buffer(), <span class="number">2048</span>)) != <span class="number">-1</span>) &#123;</span><br><span class="line">                byteCount += read;</span><br><span class="line">                sink.flush();</span><br><span class="line">                <span class="keyword">if</span> (mListener != <span class="literal">null</span>) &#123;</span><br><span class="line">                    mListener.onRequestProgress(byteCount, contentLength);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            Util.closeQuietly(source);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="通知栏相关"><a href="#通知栏相关" class="headerlink" title="通知栏相关"></a>通知栏相关</h1><h2 id="显示进度条"><a href="#显示进度条" class="headerlink" title="显示进度条"></a>显示进度条</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sardine.put(destUrl, src, ProgressRequestListener(&#123; bytesWritten: <span class="built_in">Long</span>, contentLength: <span class="built_in">Long</span> -&gt;</span><br><span class="line">    <span class="keyword">val</span> progress = (PROGRESS_MAX * bytesWritten / contentLength).toInt()</span><br><span class="line">    <span class="keyword">var</span> notification = <span class="keyword">if</span> (progress == PROGRESS_MAX) &#123;</span><br><span class="line">        <span class="comment">// 如果不在这里休眠，不能刷新通知</span></span><br><span class="line">        Thread.sleep(<span class="number">200</span>)</span><br><span class="line">        Log.d(TAG, <span class="string">"Download complete"</span>)</span><br><span class="line">        mNotificationHelper.getNotification1(<span class="string">"Picture Download"</span>, <span class="string">"Download complete"</span>)</span><br><span class="line">                .setProgress(<span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Log.d(TAG, <span class="string">"Download in progress: <span class="variable">$progress</span>"</span>)</span><br><span class="line">        mNotificationHelper.getNotification1(<span class="string">"Picture Download"</span>, <span class="string">"Download complete"</span>)</span><br><span class="line">                .setProgress(PROGRESS_MAX, progress, <span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    mNotificationHelper.notify(<span class="number">1</span>, notification)</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<h1 id="View-相关"><a href="#View-相关" class="headerlink" title="View 相关"></a>View 相关</h1><h2 id="图片加载库"><a href="#图片加载库" class="headerlink" title="图片加载库"></a>图片加载库</h2><h3 id="Glide"><a href="#Glide" class="headerlink" title="Glide"></a>Glide</h3><h4 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.github.bumptech.glide:glide:4.6.1'</span></span><br><span class="line">annotationProcessor <span class="string">'com.github.bumptech.glide:compiler:4.6.1'</span></span><br></pre></td></tr></table></figure>
+<h4 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a>Kotlin</h4><blockquote>
+<p>如果你在 Kotlin 编写的类里使用 Glide 注解，你需要引入一个 <code>kapt</code> 依赖，以代替常规的 <code>annotationProcessor</code> 依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; dependencies &#123;</span><br><span class="line">&gt;   kapt &apos;com.github.bumptech.glide:compiler:4.6.1&apos;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>请注意，你还需要在你的 <code>build.gradle</code> 文件中包含 <code>kotlin-kapt</code>插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; apply plugin: &apos;kotlin-kapt&apos;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="图片详情"><a href="#图片详情" class="headerlink" title="图片详情"></a>图片详情</h2><h3 id="PhotoView"><a href="#PhotoView" class="headerlink" title="PhotoView"></a>PhotoView</h3><h4 id="引入依赖-1"><a href="#引入依赖-1" class="headerlink" title="引入依赖"></a>引入依赖</h4><blockquote>
+<p>Add this in your root <code>build.gradle</code> file (<strong>not</strong> your module <code>build.gradle</code> file):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; allprojects &#123;</span><br><span class="line">&gt; 	repositories &#123;</span><br><span class="line">&gt;         maven &#123; url &quot;https://jitpack.io&quot; &#125;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>Then, add the library to your module <code>build.gradle</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; dependencies &#123;</span><br><span class="line">&gt; 	<span class="comment">// implementation 'com.github.chrisbanes:PhotoView:latest.release.here'</span></span><br><span class="line">&gt;     implementation <span class="string">'com.github.chrisbanes:PhotoView:2.1.3'</span></span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="正方形视图"><a href="#正方形视图" class="headerlink" title="正方形视图"></a>正方形视图</h2><p>以正方形的FrameLayout为例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.android.activityscenetransitionbasic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.widget.FrameLayout;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> android.widget.FrameLayout&#125; which forces itself to be laid out as square.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SquareFrameLayout</span> <span class="keyword">extends</span> <span class="title">FrameLayout</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SquareFrameLayout</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SquareFrameLayout</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SquareFrameLayout</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SquareFrameLayout</span><span class="params">(Context context, AttributeSet attrs,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">int</span> defStyleAttr, <span class="keyword">int</span> defStyleRes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr, defStyleRes);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> widthSize = MeasureSpec.getSize(widthMeasureSpec);</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> heightSize = MeasureSpec.getSize(heightMeasureSpec);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (widthSize == <span class="number">0</span> &amp;&amp; heightSize == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// If there are no constraints on size, let FrameLayout measure</span></span><br><span class="line">            <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Now use the smallest of the measured dimensions for both dimensions</span></span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> minSize = Math.min(getMeasuredWidth(), getMeasuredHeight());</span><br><span class="line">            setMeasuredDimension(minSize, minSize);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> size;</span><br><span class="line">        <span class="keyword">if</span> (widthSize == <span class="number">0</span> || heightSize == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// If one of the dimensions has no restriction on size, set both dimensions to be the</span></span><br><span class="line">            <span class="comment">// on that does</span></span><br><span class="line">            size = Math.max(widthSize, heightSize);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Both dimensions have restrictions on size, set both dimensions to be the</span></span><br><span class="line">            <span class="comment">// smallest of the two</span></span><br><span class="line">            size = Math.min(widthSize, heightSize);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> newMeasureSpec = MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY);</span><br><span class="line">        <span class="keyword">super</span>.onMeasure(newMeasureSpec, newMeasureSpec);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ViewPager相关"><a href="#ViewPager相关" class="headerlink" title="ViewPager相关"></a>ViewPager相关</h2><h3 id="最简单的PagerAdapter实现"><a href="#最简单的PagerAdapter实现" class="headerlink" title="最简单的PagerAdapter实现"></a>最简单的PagerAdapter实现</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">PhotoDetailsAdapter</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> context: Context, <span class="keyword">private</span> <span class="keyword">val</span> mValues: ArrayList&lt;String&gt;) : PagerAdapter() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">instantiateItem</span><span class="params">(container: <span class="type">ViewGroup</span>, position: <span class="type">Int</span>)</span></span>: Any &#123;</span><br><span class="line">        <span class="keyword">val</span> itemView = TextView(context)</span><br><span class="line">        itemView.gravity = Gravity.CENTER</span><br><span class="line">        <span class="keyword">val</span> value = mValues[position]</span><br><span class="line">        itemView.text = value</span><br><span class="line">        container.addView(itemView)</span><br><span class="line">        <span class="keyword">return</span> itemView</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">destroyItem</span><span class="params">(container: <span class="type">ViewGroup</span>, position: <span class="type">Int</span>, `<span class="keyword">object</span>`: <span class="type">Any</span>)</span></span> &#123;</span><br><span class="line">        container.removeView(`<span class="keyword">object</span>` <span class="keyword">as</span> View)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">isViewFromObject</span><span class="params">(view: <span class="type">View</span>, `<span class="keyword">object</span>`: <span class="type">Any</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> view == `<span class="keyword">object</span>`</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getCount</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mValues.size</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="应用PhotoView"><a href="#应用PhotoView" class="headerlink" title="应用PhotoView"></a>应用<a href="https://github.com/chrisbanes/PhotoView" target="_blank" rel="noopener">PhotoView</a></h3><h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><p>Add this in your root <code>build.gradle</code> file (<strong>not</strong> your module <code>build.gradle</code> file):</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">	repositories &#123;</span><br><span class="line">        maven &#123; url <span class="string">"https://jitpack.io"</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then, add the library to your module <code>build.gradle</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation <span class="string">'com.github.chrisbanes:PhotoView:latest.release.here'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>如果直接使用系统自带的<code>ViewPager</code>可能会抛出<code>IllegalArgumentException</code>：</p>
+<p><img src="../images/屏幕快照 2018-03-09 下午4.30.44.png" alt=""></p>
+<p><a href="https://github.com/chrisbanes/PhotoView" target="_blank" rel="noopener">PhotoView</a> 也描述了这个问题：</p>
+<blockquote>
+<p>There are some ViewGroups (ones that utilize onInterceptTouchEvent) that<br> throw exceptions when a PhotoView is placed within them, most notably <a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="noopener">ViewPager</a> and <a href="https://developer.android.com/reference/android/support/v4/widget/DrawerLayout.html" target="_blank" rel="noopener">DrawerLayout</a>.<br> This is a framework issue that has not been resolved. In order to<br>prevent this exception (which typically occurs when you zoom out), take a<br> look at <a href="https://github.com/chrisbanes/PhotoView/blob/master/sample/src/main/java/uk/co/senab/photoview/sample/HackyDrawerLayout.java" target="_blank" rel="noopener">HackyDrawerLayout</a><br> and you can see the solution is to simply catch the exception. Any<br>ViewGroup which uses onInterceptTouchEvent will also need to be extended<br> and exceptions caught. Use the <a href="https://github.com/chrisbanes/PhotoView/blob/master/sample/src/main/java/uk/co/senab/photoview/sample/HackyDrawerLayout.java" target="_blank" rel="noopener">HackyDrawerLayout</a> as a template of how to do so. The basic implementation is:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HackyProblematicViewGroup</span> <span class="keyword">extends</span> <span class="title">ProblematicViewGroup</span> </span>&#123;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="function"><span class="keyword">public</span> <span class="title">HackyProblematicViewGroup</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">&gt;         <span class="keyword">super</span>(context);</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;     <span class="meta">@Override</span></span><br><span class="line">&gt;     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">&gt;         <span class="keyword">try</span> &#123;</span><br><span class="line">&gt;             <span class="keyword">return</span> <span class="keyword">super</span>.onInterceptTouchEvent(ev);</span><br><span class="line">&gt;         &#125; <span class="keyword">catch</span> (IllegalArgumentException e) &#123;</span><br><span class="line">&gt; 						<span class="comment">//uncomment if you really want to see these errors</span></span><br><span class="line">&gt;             <span class="comment">//e.printStackTrace();</span></span><br><span class="line">&gt;             <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/11/summarize-textview-set-drawable/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/summarize-gradle/" rel="prev" title="Gradle 3.+ 知识点整理">
+                Gradle 3.+ 知识点整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Zhu Liang" />
+          <p class="site-author-name" itemprop="name">Zhu Liang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取所有包含图片的文件夹列表"><span class="nav-number">1.</span> <span class="nav-text">获取所有包含图片的文件夹列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fragment相关"><span class="nav-number">2.</span> <span class="nav-text">Fragment相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在Fragment中监听Back键"><span class="nav-number">2.1.</span> <span class="nav-text">在Fragment中监听Back键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fragment之间通信"><span class="nav-number">2.2.</span> <span class="nav-text">Fragment之间通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OkHttp相关"><span class="nav-number">3.</span> <span class="nav-text">OkHttp相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用OkHttp为Request添加Basic-Authentication"><span class="nav-number">3.1.</span> <span class="nav-text">使用OkHttp为Request添加Basic Authentication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用OkHttp上传文件"><span class="nav-number">3.2.</span> <span class="nav-text">使用OkHttp上传文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不显示上传进度"><span class="nav-number">3.2.1.</span> <span class="nav-text">不显示上传进度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示上传进度"><span class="nav-number">3.2.2.</span> <span class="nav-text">显示上传进度</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通知栏相关"><span class="nav-number">4.</span> <span class="nav-text">通知栏相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示进度条"><span class="nav-number">4.1.</span> <span class="nav-text">显示进度条</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#View-相关"><span class="nav-number">5.</span> <span class="nav-text">View 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图片加载库"><span class="nav-number">5.1.</span> <span class="nav-text">图片加载库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Glide"><span class="nav-number">5.1.1.</span> <span class="nav-text">Glide</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入依赖"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">引入依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kotlin"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">Kotlin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片详情"><span class="nav-number">5.2.</span> <span class="nav-text">图片详情</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PhotoView"><span class="nav-number">5.2.1.</span> <span class="nav-text">PhotoView</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入依赖-1"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">引入依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正方形视图"><span class="nav-number">5.3.</span> <span class="nav-text">正方形视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewPager相关"><span class="nav-number">5.4.</span> <span class="nav-text">ViewPager相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的PagerAdapter实现"><span class="nav-number">5.4.1.</span> <span class="nav-text">最简单的PagerAdapter实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用PhotoView"><span class="nav-number">5.4.2.</span> <span class="nav-text">应用PhotoView</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖"><span class="nav-number">5.4.2.1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">5.4.2.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhu Liang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

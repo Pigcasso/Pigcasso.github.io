@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="软件版本号软件版本标号订定是指软件设置版本号码的方式。通常，版本号码会议数字订定。软件控制比较普遍的3种命名格式：GNU 风格版本号命名格式、Windows 风格的版本号命名格式、.Net Framework风格的软件版本号命名格式。    中文名 英文名     软件版本号 Software version number   主版本号 Major_Version   子版本号 Minor_Ver">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件版本号">
+<meta property="og:url" content="http://zhuliang.io/2018/03/30/software-version-number/index.html">
+<meta property="og:site_name" content="Now Or Never!!">
+<meta property="og:description" content="软件版本号软件版本标号订定是指软件设置版本号码的方式。通常，版本号码会议数字订定。软件控制比较普遍的3种命名格式：GNU 风格版本号命名格式、Windows 风格的版本号命名格式、.Net Framework风格的软件版本号命名格式。    中文名 英文名     软件版本号 Software version number   主版本号 Major_Version   子版本号 Minor_Ver">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-16T12:01:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件版本号">
+<meta name="twitter:description" content="软件版本号软件版本标号订定是指软件设置版本号码的方式。通常，版本号码会议数字订定。软件控制比较普遍的3种命名格式：GNU 风格版本号命名格式、Windows 风格的版本号命名格式、.Net Framework风格的软件版本号命名格式。    中文名 英文名     软件版本号 Software version number   主版本号 Major_Version   子版本号 Minor_Ver">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhuliang.io/2018/03/30/software-version-number/"/>
+
+
+
+
+
+  <title>软件版本号 | Now Or Never!!</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Now Or Never!!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuliang.io/2018/03/30/software-version-number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhu Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Now Or Never!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软件版本号</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-30T00:00:00+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Version-软件版本号/" itemprop="url" rel="index">
+                    <span itemprop="name">Version 软件版本号</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="软件版本号"><a href="#软件版本号" class="headerlink" title="软件版本号"></a>软件版本号</h1><p>软件版本标号订定是指软件设置版本号码的方式。通常，版本号码会议数字订定。<br>软件控制比较普遍的3种命名格式：GNU 风格版本号命名格式、Windows 风格的版本号命名格式、.Net Framework风格的软件版本号命名格式。</p>
+<table>
+<thead>
+<tr>
+<th>中文名</th>
+<th>英文名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>软件版本号</td>
+<td>Software version number</td>
+</tr>
+<tr>
+<td>主版本号</td>
+<td>Major_Version</td>
+</tr>
+<tr>
+<td>子版本号</td>
+<td>Minor_Version</td>
+</tr>
+<tr>
+<td>修正版本号</td>
+<td>Revision_Number</td>
+</tr>
+</tbody>
+</table>
+<h1 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h1><h2 id="GNU版"><a href="#GNU版" class="headerlink" title="GNU版"></a>GNU版</h2><p>主版本号 . 子版本号 [. 修正版本号 [.编译版本号 ]]</p>
+<p>Major_Version_Number.Minor_Version_Number[.Revision_Number[.Build_Number]]</p>
+<p>实例：1.2.1，2.0，5.0.0 build-13124</p>
+<h3 id="管理策略"><a href="#管理策略" class="headerlink" title="管理策略"></a>管理策略</h3><ol>
+<li>项目初版本时，版本号可以为 0.1 或 0.1.0，也可以为 1.0 或 1.0.0，我想你会选择那个主版本号为 0 的方式；</li>
+<li>当项目在进行了<strong>局部修改或 bug 修正</strong>时，主版本号和子版本号都不变，修正版本号加1；</li>
+<li>当项目在<strong>原有的基础上增加了部分功能</strong>时，主版本号不变，子版本号加 1，修正版本号复位为 0，因而可以被忽略掉；</li>
+<li>当项目在进行了<strong>重大修改或局部修正累积较多</strong>，而导致项目整体发生全局变化时，主版本号加 1；</li>
+<li>编译版本号一般是编译器在编译过程中自动生成的，我们只定义其格式，并不进行人为控制。</li>
+</ol>
+<h1 id="版本区别"><a href="#版本区别" class="headerlink" title="版本区别"></a>版本区别</h1><h2 id="测试版"><a href="#测试版" class="headerlink" title="测试版"></a>测试版</h2><h3 id="α（）版"><a href="#α（）版" class="headerlink" title="α（）版"></a>α（）版</h3><p>此版本表示该软件仅仅是一个初步完成品，通常只在软件开发者内部交流，也有很少一部分发布给专业测试人员。一般而言，该版本软件的bug较多，普通用户最好不要安装。</p>
+<h3 id="β（beta）版"><a href="#β（beta）版" class="headerlink" title="β（beta）版"></a>β（beta）版</h3><p>参考：<br><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E7%89%88%E6%9C%AC%E5%8F%B7" target="_blank" rel="noopener">软件版本号</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/30/publish-aar-to-jcenter/" rel="next" title="发布 Android Studio Library 到 jCenter">
+                <i class="fa fa-chevron-left"></i> 发布 Android Studio Library 到 jCenter
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/01/about-network/" rel="prev" title="关于网络的相关知识">
+                关于网络的相关知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Zhu Liang" />
+          <p class="site-author-name" itemprop="name">Zhu Liang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件版本号"><span class="nav-number">1.</span> <span class="nav-text">软件版本号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命名风格"><span class="nav-number">2.</span> <span class="nav-text">命名风格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GNU版"><span class="nav-number">2.1.</span> <span class="nav-text">GNU版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#管理策略"><span class="nav-number">2.1.1.</span> <span class="nav-text">管理策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#版本区别"><span class="nav-number">3.</span> <span class="nav-text">版本区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#测试版"><span class="nav-number">3.1.</span> <span class="nav-text">测试版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#α（）版"><span class="nav-number">3.1.1.</span> <span class="nav-text">α（）版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#β（beta）版"><span class="nav-number">3.1.2.</span> <span class="nav-text">β（beta）版</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhu Liang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

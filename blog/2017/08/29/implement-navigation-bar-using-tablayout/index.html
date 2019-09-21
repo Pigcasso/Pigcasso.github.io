@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="目录{:toc}   考虑到很多小伙伴可能没有耐心看完整篇文章，先看效果：  如果有兴趣的话，请继续往下看。如果没有兴趣，也没关系，下载下来安装看看效果的时间应该还是有的吧。  做这个功能其实是为调研应用到我司产品做的准备工作。很多文件管理类产品，都有这个控件（我们这里叫它文件夹导航条）。实现👆的效果，使用 Android Support Design 库提供的 TabLayout 即可。不过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用TabLayout实现文件夹导航条">
+<meta property="og:url" content="http://zhuliang.io/2017/08/29/implement-navigation-bar-using-tablayout/index.html">
+<meta property="og:site_name" content="Now Or Never!!">
+<meta property="og:description" content="目录{:toc}   考虑到很多小伙伴可能没有耐心看完整篇文章，先看效果：  如果有兴趣的话，请继续往下看。如果没有兴趣，也没关系，下载下来安装看看效果的时间应该还是有的吧。  做这个功能其实是为调研应用到我司产品做的准备工作。很多文件管理类产品，都有这个控件（我们这里叫它文件夹导航条）。实现👆的效果，使用 Android Support Design 库提供的 TabLayout 即可。不过">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2275760-e34168b90d72b20d.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2275760-06b46f9fdec86c7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2275760-78bdae1863e49ea8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2275760-f4aae2bce911ad79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2275760-3f425a77203e0fce.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-13T01:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用TabLayout实现文件夹导航条">
+<meta name="twitter:description" content="目录{:toc}   考虑到很多小伙伴可能没有耐心看完整篇文章，先看效果：  如果有兴趣的话，请继续往下看。如果没有兴趣，也没关系，下载下来安装看看效果的时间应该还是有的吧。  做这个功能其实是为调研应用到我司产品做的准备工作。很多文件管理类产品，都有这个控件（我们这里叫它文件夹导航条）。实现👆的效果，使用 Android Support Design 库提供的 TabLayout 即可。不过">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2275760-e34168b90d72b20d.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhuliang.io/2017/08/29/implement-navigation-bar-using-tablayout/"/>
+
+
+
+
+
+  <title>用TabLayout实现文件夹导航条 | Now Or Never!!</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Now Or Never!!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuliang.io/2017/08/29/implement-navigation-bar-using-tablayout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhu Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Now Or Never!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用TabLayout实现文件夹导航条</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-29T00:00:00+08:00">
+                2017-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<blockquote>
+<p>考虑到很多小伙伴可能没有耐心看完整篇文章，先看效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2275760-e34168b90d72b20d.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>如果有兴趣的话，请继续往下看。如果没有兴趣，也没关系，<a href="https://github.com/JulianAndroid/AppChooser/releases/download/v1.2.0/AppChooser-1.2.0.apk" target="_blank" rel="noopener">下载</a>下来安装看看效果的时间应该还是有的吧。</p>
+</blockquote>
+<p>做这个功能其实是为调研应用到我司产品做的准备工作。很多文件管理类产品，都有这个控件（我们这里叫它<strong>文件夹导航条</strong>）。实现👆的效果，使用 Android Support Design 库提供的 TabLayout 即可。不过只阅读 TabLayout 官方文档，不看源码，<strong>我保证你写不出来</strong>。为什么呢？因为 TabLayout 的特性，文档中没有提到。我这里先卖个关子，请跟着我一步一步的实现。</p>
+<h2 id="读文档实现阶段"><a href="#读文档实现阶段" class="headerlink" title="读文档实现阶段"></a>读文档实现阶段</h2><p>我们首先从<a href="https://developer.android.com/reference/android/support/design/widget/TabLayout.html" target="_blank" rel="noopener">TabLayout官方文档</a>中寻找有用信息（自备梯子）。</p>
+<p><strong>TabLayout提供了两种模式： Fixed 和 Scrollable。</strong> </p>
+<blockquote>
+<p><strong>Fixed模式</strong> :</p>
+<p>Fixed tabs display all tabs concurrently.</p>
+<p>所有的标签同时显示。</p>
+<p><strong>Scrollable模式</strong>：</p>
+<p>Scrollable tabs display a subset of tabs at any given moment, and can contain longer tab labels and a larger number of tabs.</p>
+<p>可滚动选项卡在任何给定的时刻显示一个标签的子集，并且可以包含更长的标签标签和更多的标签。</p>
+<p><em>翻译由有道提供</em></p>
+</blockquote>
+<p><strong>TabLayout提供了两种添加 Tab 的方式：</strong></p>
+<ul>
+<li><p>动态添加 Tabs：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TabLayout tabLayout = ...;</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"Tab 1"</span>));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"Tab 2"</span>));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"Tab 3"</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>静态添加 Tabs：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.design.widget.TabLayout</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	 <span class="tag">&lt;<span class="name">android.support.design.widget.TabItem</span></span></span><br><span class="line"><span class="tag">	         <span class="attr">android:text</span>=<span class="string">"@string/tab_text"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">	 <span class="tag">&lt;<span class="name">android.support.design.widget.TabItem</span></span></span><br><span class="line"><span class="tag">	         <span class="attr">android:icon</span>=<span class="string">"@drawable/ic_android"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.design.widget.TabLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>添加接听：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">mTabLayout.setOnTabSelectedListener(<span class="keyword">new</span> TabLayout.OnTabSelectedListener() &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Tab 进入选中状态时被调用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTabSelected</span><span class="params">(TabLayout.Tab tab)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Tab 离开选中状态时回调</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">   	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTabUnselected</span><span class="params">(TabLayout.Tab tab)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Tab 已经被选中又被选中时回调</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTabReselected</span><span class="params">(TabLayout.Tab tab)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>集成ViewPager</strong>：</p>
+<p>如果你想要 TabLayout 跟 ViewPager 一起使用，也有两种方式：</p>
+<ul>
+<li><p>动态设置：<code>TabLayout#setWithViewPager(ViewPager)</code></p>
+</li>
+<li><p>静态设置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span></span><br><span class="line"><span class="tag"> <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">android.support.design.widget.TabLayout</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">android:layout_gravity</span>=<span class="string">"top"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.v4.view.ViewPager</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：</p>
+<p>如果你集成了 ViewPager，那么你必须重写 <code>PagerAdapter#getPageTitle()</code> ，否则你会看到既没有Text也没有Icon的Tab。如果你问我为什么，<strong>源码告诉我的</strong>。</p>
+<p><strong>文件夹导航条的功能点：</strong></p>
+<ol>
+<li>能够水平滑动</li>
+<li>能够动态添加 Tabs</li>
+<li>能够动态删除 Tabs</li>
+<li>能够选择 Tab</li>
+</ol>
+<p>阅读文档后你会发现我们需要的效果TabLayout都能满足。那么我们就开始编码吧：</p>
+<p><strong>部分布局文件代码：</strong> <a href="https://github.com/JulianAndroid/AppChooser/blob/master/app/src/main/res/layout/activity_file_infos.xml" target="_blank" rel="noopener">传送门</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.design.widget.AppBarLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/appbar"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line">  	<span class="comment">&lt;!--可收缩的Toobar--&gt;</span>	</span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.Toolbar</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/toolbar"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"?attr/actionBarSize"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_scrollFlags</span>=<span class="string">"scroll|enterAlways|enterAlwaysCollapsed"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">android.support.v7.widget.Toolbar</span>&gt;</span></span><br><span class="line">  	<span class="comment">&lt;!--今天的主角：可滚动的TabLayout--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.TabLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tabLayout"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:tabIndicatorHeight</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:tabMode</span>=<span class="string">"scrollable"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意：文件夹导航条不需要为选中的Tab设置指示器，所以将指示器的高度设置为 <code>0dp</code>。</p>
+<p><strong>动态添加Tabs：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TabLayout tabLayout = ...;</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"0"</span>)</span><br><span class="line">        .setIcon(R.drawable.ic_keyboard_arrow_right_white_24dp));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"Android"</span>)</span><br><span class="line">        .setIcon(R.drawable.ic_keyboard_arrow_right_white_24dp));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setText(<span class="string">"data"</span>)</span><br><span class="line">        .setIcon(R.drawable.ic_keyboard_arrow_right_white_24dp));</span><br></pre></td></tr></table></figure>
+<p>现在我们把开发者选项的边界选项打开来看看效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2275760-06b46f9fdec86c7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>读 TabLayout.Tab 文档：</strong></p>
+<p>读 <code>TabLayout.Tab</code> 文档是你会发现，<code>TabLayout.Tab.setCustomView()</code> 方法。于是我们来尝试使用这个方法，看看是什么效果，代码如下：</p>
+<p><strong>定义 customView 布局文件：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@android:id/text1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@android:id/icon"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意：其实到了这一步你就不得不看源码了，因为设置控件类型、控件ID，不看源码怎么知道如何设置。</p>
+<p><strong>动态添加Tabs：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_custom_view)</span><br><span class="line">        .setText(<span class="string">"0"</span>)</span><br><span class="line">        .setIcon(R.drawable.ic_keyboard_arrow_right_white_24dp));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_custom_view)</span><br><span class="line">        .setText(<span class="string">"Android"</span>)</span><br><span class="line">        .setIcon(R.drawable.ic_keyboard_arrow_right_white_24dp));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_custom_view)</span><br><span class="line">        .setText(<span class="string">"data"</span>)</span><br><span class="line">        .setIcon(R.drawable.ic_keyboard_arrow_right_white_24dp));</span><br></pre></td></tr></table></figure>
+<p>再来看下效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2275760-78bdae1863e49ea8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>通过打开<strong>开发者模式的边界选项</strong>，我们知道箭头图标下面的紫色区域表示这个ImageView设置了 <code>marginBottom</code>属性。然而布局文件里我们并没有设置，那么是谁设置的呢，难道是神？还是老老实实读源码吧。</p>
+<h2 id="读源码实现阶段"><a href="#读源码实现阶段" class="headerlink" title="读源码实现阶段"></a>读源码实现阶段</h2><p><code>TabLayout.TabView.updateTextAndIcon()</code>给了我们答案：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (iconView != <span class="keyword">null</span>) &#123;</span><br><span class="line">    MarginLayoutParams lp = ((MarginLayoutParams) iconView.getLayoutParams());</span><br><span class="line">    <span class="keyword">int</span> bottomMargin = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (hasText &amp;&amp; iconView.getVisibility() == VISIBLE) &#123;</span><br><span class="line">        <span class="comment">// If we're showing both text and icon, add some margin bottom to the icon</span></span><br><span class="line">        bottomMargin = dpToPx(DEFAULT_GAP_TEXT_ICON);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (bottomMargin != lp.bottomMargin) &#123;</span><br><span class="line">        lp.bottomMargin = bottomMargin;</span><br><span class="line">        iconView.requestLayout();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过上面的代码我们了解到Tab既包含文字又包含图标，那么图标的marginBottom至少会设置 8dp。</p>
+<p>那么老铁们会不会感觉<strong>很扎心</strong>，Android团队的工程师为什么要这么写呢？真实百思不得姐呀！！</p>
+<p>后来在 <a href="https://material.io/guidelines/components/tabs.html" target="_blank" rel="noopener">Tabs的设计文档</a>中我们得到了答案：</p>
+<blockquote>
+<p><strong>Tabs with icons and text</strong></p>
+<p>Height</p>
+<ul>
+<li>72dp</li>
+</ul>
+<p>Icon</p>
+<ul>
+<li>24 x 24dp</li>
+</ul>
+<p>Content alignment</p>
+<ul>
+<li>Text and icon are centered horizontally in the tab</li>
+</ul>
+<p>Padding（👇）</p>
+<ul>
+<li>10dp between icon and text</li>
+<li>16dp under text</li>
+</ul>
+</blockquote>
+<p>再来一张图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2275760-f4aae2bce911ad79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Fixed tabs on mobile, icons and text"></p>
+<p>由此我得出一个结论，用<code>TabLayout.Tab.setIcon()</code> 为Tab设置箭头图标呈现的效果是没有办法<strong>让Text和Icon居中对齐显示的</strong>。</p>
+<p>那么还有什么方法可以实现<strong>Text和Icon</strong>居中显示呢🙈🙊🙉？</p>
+<p>有一定Android开发经验的小伙伴一定知道<code>TextView.setCompoundDrawablesXXX()</code>系列方法，对应的属性是：<code>android:drawableXXX</code>。使用此方法我们就可以在TextView的上下左右方向添加图片了，顺便也解决了<strong>Text和Icon居中显示的问题</strong>。</p>
+<p><strong>customView布局代码如下：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@android:id/text1"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:drawableRight</span>=<span class="string">"@drawable/ic_keyboard_arrow_right_white_24dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">"center"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>动态添加Tabs代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_custom_view)</span><br><span class="line">        .setText(<span class="string">"0"</span>));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_custom_view)</span><br><span class="line">        .setText(<span class="string">"Android"</span>));</span><br><span class="line">tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_custom_view)</span><br><span class="line">        .setText(<span class="string">"data"</span>));</span><br></pre></td></tr></table></figure>
+<p><strong>效果如下：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2275760-3f425a77203e0fce.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>读文档实现阶段</strong>、<strong>读源码实现阶段</strong>这两个章节记录了实现<strong>文件夹导航条</strong>的整个过程。这还只是<strong>文件浏览器</strong>添加<strong>文件夹导航条</strong>的第一个阶段。在整个调研的过程中，让我经历的一次<strong>Android团队的工程师实现一个自定义控件</strong>的过程。大多数自定义View的文章都会这样介绍：</p>
+<blockquote>
+<p>自定义View的步骤：</p>
+<p>1、自定义View的属性</p>
+<p>2、在View的构造方法中获得我们自定义的属性</p>
+<p>[ 3、重写onMesure ]</p>
+<p>4、重写onDraw</p>
+<p>我把3用[]标出了，所以说3不一定是必须的，当然了大部分情况下还是需要重写的。</p>
+<p>以上内容来自<a href="http://blog.csdn.net/lmj623565791/article/details/24252901" target="_blank" rel="noopener">Android 自定义View (一)</a></p>
+</blockquote>
+<p>如果仅仅从开发者的角度出发，步骤就是如此。然而大多数情况下我们都会忽略到<strong>设计</strong>这个环节。我在文中解释了Tab中同时包含Text和Icon的时候，为什么Icon的底部总会设置margin？<strong>就是因为写这个TabLayout控件的Android工程师是根据<a href="https://material.io/guidelines/components/tabs.html" target="_blank" rel="noopener">Tabs官方文档</a>的要求进行编码的。</strong> 写Android原生控件况且如此，难道我比Android团队的工程师还🐂吗？<strong>有多少小伙伴跟我一样，拿到需求二话不说直接撸代码的？😱</strong></p>
+<p>写到这里，这篇文章已到结尾，在实现文件夹导航条的过程中还遇到了：</p>
+<ol>
+<li>选中Tab后，如何显示对应的文件夹下的子文件列表页面（参考了FragmentTabHost切换Fragment的实现方式）</li>
+<li>点击Back键，返回父目录</li>
+<li>选中文件夹，跳转到子文件夹列表页面</li>
+<li>旋转屏幕，恢复到旋转前的状态</li>
+</ol>
+<p>以上问题都已得到解决，并已经应用到我的 <a href="https://github.com/JulianAndroid/AppChooser" target="_blank" rel="noopener">AppChooser</a> 的sample当中。文章都读到这里了，<a href="https://github.com/JulianAndroid/AppChooser/releases/download/v1.2.0/AppChooser-1.2.0.apk" target="_blank" rel="noopener">下载安装</a>看看效果的功夫应该还是有的吧。如果你发现问题，可以给我提<a href="https://github.com/JulianAndroid/AppChooser/issues" target="_blank" rel="noopener">Issues</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/24/customize-app-chooser/" rel="next" title="自定义应用选择器">
+                <i class="fa fa-chevron-left"></i> 自定义应用选择器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/11/my-first-blogs/" rel="prev" title="搭建个人博客">
+                搭建个人博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Zhu Liang" />
+          <p class="site-author-name" itemprop="name">Zhu Liang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#读文档实现阶段"><span class="nav-number">1.</span> <span class="nav-text">读文档实现阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读源码实现阶段"><span class="nav-number">2.</span> <span class="nav-text">读源码实现阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhu Liang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="目录{:toc}  签名 APK 相关问题用Android Studio签名的APK，部分机型安装不上签名APK一直使用Android Studio的generate Signed Apk…，打包给同事测试的时候，同事反应安装不上，提示“应用未安装”。在终端用 adb 命令 : 123adb install whatever.apkpkg: /data/local/tmp/whatever.ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公司产品知识点整理">
+<meta property="og:url" content="http://zhuliang.io/2018/02/28/summarize-product-of-my-company/index.html">
+<meta property="og:site_name" content="Now Or Never!!">
+<meta property="og:description" content="目录{:toc}  签名 APK 相关问题用Android Studio签名的APK，部分机型安装不上签名APK一直使用Android Studio的generate Signed Apk…，打包给同事测试的时候，同事反应安装不上，提示“应用未安装”。在终端用 adb 命令 : 123adb install whatever.apkpkg: /data/local/tmp/whatever.ap">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.stack.imgur.com/Dijv8.png">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1foxdf5336fg306r0c04qq.gif">
+<meta property="og:updated_time" content="2018-04-08T01:09:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="公司产品知识点整理">
+<meta name="twitter:description" content="目录{:toc}  签名 APK 相关问题用Android Studio签名的APK，部分机型安装不上签名APK一直使用Android Studio的generate Signed Apk…，打包给同事测试的时候，同事反应安装不上，提示“应用未安装”。在终端用 adb 命令 : 123adb install whatever.apkpkg: /data/local/tmp/whatever.ap">
+<meta name="twitter:image" content="https://i.stack.imgur.com/Dijv8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhuliang.io/2018/02/28/summarize-product-of-my-company/"/>
+
+
+
+
+
+  <title>公司产品知识点整理 | Now Or Never!!</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Now Or Never!!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuliang.io/2018/02/28/summarize-product-of-my-company/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhu Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Now Or Never!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">公司产品知识点整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h1 id="签名-APK-相关问题"><a href="#签名-APK-相关问题" class="headerlink" title="签名 APK 相关问题"></a>签名 APK 相关问题</h1><h2 id="用Android-Studio签名的APK，部分机型安装不上"><a href="#用Android-Studio签名的APK，部分机型安装不上" class="headerlink" title="用Android Studio签名的APK，部分机型安装不上"></a>用Android Studio签名的APK，部分机型安装不上</h2><p>签名APK一直使用Android Studio的<strong>generate Signed Apk…</strong>，打包给同事测试的时候，同事反应安装不上，提示“<strong>应用未安装</strong>”。在终端用 adb 命令 :</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb install whatever.apk</span><br><span class="line">pkg: /data/<span class="built_in">local</span>/tmp/whatever.apk</span><br><span class="line">Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES]</span><br></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/2914105/what-is-install-parse-failed-no-certificates-error" target="_blank" rel="noopener">What is INSTALL_PARSE_FAILED_NO_CERTIFICATES error?</a> 解决了这个问题：</p>
+<p><img src="https://i.stack.imgur.com/Dijv8.png" alt=""></p>
+<p>我在签名的时候，没有勾选上”<strong>V1(Jar Signature)</strong>“。Android官方<a href="https://source.android.com/security/apksigning/" target="_blank" rel="noopener">应用签名</a>介绍了V1和V2的区别：</p>
+<blockquote>
+<p>Android 支持两种应用签名方案，一种是基于 JAR 签名的方案（v1 方案），另一种是 Android Nougat (Android 7.0) 中引入的 <a href="https://source.android.com/security/apksigning/v2.html" target="_blank" rel="noopener">APK 签名方案 v2（v2 方案）</a>。</p>
+<p>为了最大限度地提高兼容性，应同时采用 v1 和 v2 这两种方案对应用进行签名。与只通过 v1 方案签名的应用相比，通过 v2 方案签名的应用能够更快速地安装到 Android Nougat 及更高版本的设备上。更低版本的 Android 平台会忽略 v2 签名，这就需要应用包含 v1 签名。</p>
+</blockquote>
+<h1 id="DP与PX转换"><a href="#DP与PX转换" class="headerlink" title="DP与PX转换"></a>DP与PX转换</h1><h2 id="DP转PX"><a href="#DP转PX" class="headerlink" title="DP转PX"></a>DP转PX</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int dpToPx(Context context, int dps) &#123;</span><br><span class="line">    return Math.round(context.getResources().getDisplayMetrics().density * dps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="日志留存"><a href="#日志留存" class="headerlink" title="日志留存"></a>日志留存</h1><h2 id="步骤一：引入依赖"><a href="#步骤一：引入依赖" class="headerlink" title="步骤一：引入依赖"></a>步骤一：引入依赖</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// build.gradle</span></span><br><span class="line">compile <span class="string">'com.jakewharton.timber:timber:4.6.0'</span></span><br><span class="line">compile <span class="string">'log4j:log4j:1.2.17'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入 android-logging-log4j-1.0.3.jar</span></span><br></pre></td></tr></table></figure>
+<h2 id="步骤二：初始化timber"><a href="#步骤二：初始化timber" class="headerlink" title="步骤二：初始化timber"></a>步骤二：初始化timber</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Application</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 收集日志信息</span></span><br><span class="line">  <span class="keyword">if</span> (BuildConfig.DEBUG) &#123;</span><br><span class="line">    Timber.plant(<span class="keyword">new</span> Timber.DebugTree(), LogTrackerTree.getInstance());</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    Timber.plant(LogTrackerTree.getInstance());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// LogTrackerTree</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogTrackerTree</span> <span class="keyword">extends</span> <span class="title">Timber</span>.<span class="title">Tree</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LogTrackerTree sInstance;</span><br><span class="line">    <span class="keyword">private</span> LogConfigurator mLogConfigurator = <span class="keyword">new</span> LogConfigurator();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LogTrackerTree <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (LogTrackerTree.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    sInstance = <span class="keyword">new</span> LogTrackerTree();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LogTrackerTree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        File logFile = <span class="keyword">new</span> File(DirectoryUtils.getNutstoreLogDir(), <span class="string">"whatever.log"</span>);</span><br><span class="line">        String filePattern = <span class="string">"%d - [%c] - %p : %m%n"</span>;</span><br><span class="line">        <span class="keyword">int</span> maxBackupSize = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">long</span> maxFileSize = <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">        configure(logFile.getAbsolutePath(), filePattern, maxBackupSize, maxFileSize);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(String fileName, String filePattern, <span class="keyword">int</span> maxBackupSize, <span class="keyword">long</span> maxFileSize)</span> </span>&#123;</span><br><span class="line">        mLogConfigurator.setFileName(fileName);</span><br><span class="line">        mLogConfigurator.setMaxFileSize(maxFileSize);</span><br><span class="line">        mLogConfigurator.setFilePattern(filePattern);</span><br><span class="line">        mLogConfigurator.setMaxBackupSize(maxBackupSize);</span><br><span class="line">        mLogConfigurator.setUseLogCatAppender(<span class="keyword">true</span>);</span><br><span class="line">        mLogConfigurator.configure();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(<span class="keyword">int</span> priority, String tag, @NonNull String message, Throwable t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (priority) &#123;</span><br><span class="line">            <span class="keyword">case</span> Log.VERBOSE:</span><br><span class="line">                <span class="comment">// do nothing</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> Log.DEBUG:</span><br><span class="line">                Logger.getLogger(tag).debug(msg, t);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> Log.INFO:</span><br><span class="line">                Logger.getLogger(tag).info(msg, t);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> Log.WARN:</span><br><span class="line">                Logger.getLogger(tag).warn(msg, t);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> Log.ERROR:</span><br><span class="line">                Logger.getLogger(tag).warn(msg, t);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> Log.ASSERT:</span><br><span class="line">                Logger.getLogger(tag).error(msg, t);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Invalid priority: "</span> + priority);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="步骤三：打印log"><a href="#步骤三：打印log" class="headerlink" title="步骤三：打印log"></a>步骤三：打印log</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Timber.tag(tag).d(msg);</span><br><span class="line">Timber.tag(tag).v(msg);</span><br><span class="line">Timber.tag(tag).e(msg);</span><br></pre></td></tr></table></figure>
+<h1 id="UI-相关"><a href="#UI-相关" class="headerlink" title="UI 相关"></a>UI 相关</h1><h2 id="PopupWindow相关"><a href="#PopupWindow相关" class="headerlink" title="PopupWindow相关"></a>PopupWindow相关</h2><h3 id="仿微信弹出相册选择页面"><a href="#仿微信弹出相册选择页面" class="headerlink" title="仿微信弹出相册选择页面"></a>仿微信弹出相册选择页面</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1foxdf5336fg306r0c04qq.gif" alt=""></p>
+<p>Android提供了<code>ListPopupWindow</code>，内部封装了PopupWindow、ListView，代码如下：</p>
+<p><strong>布局文件</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">tools:context</span>=<span class="string">".v2.ui.photoselect.PhotoSelectActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">&lt;!--选择相册后显示相册下所有的图片--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/recycler_view"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  	<span class="comment">&lt;!--锚点--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">View</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/popup_anchor"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"1dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/bottomBar"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"@dimen/spacing_56dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">"@color/colorAccent"</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">      	<span class="comment">&lt;!--点击按钮弹出相册选择页面--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/button_photo_select_album_picker"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_centerVertical</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:text</span>=<span class="string">"图片"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>弹出相册选择代码</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">showAlbumPicker</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (view == <span class="literal">null</span> || context == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">val</span> recyclerView = view!!.findViewById&lt;RecyclerView&gt;(R.id.recycler_view)</span><br><span class="line">    <span class="keyword">val</span> popupWindow = ListPopupWindow(context!!)</span><br><span class="line">  	<span class="comment">// 为 popupWindow 设置固定的宽高</span></span><br><span class="line">    popupWindow.width = recyclerView.width</span><br><span class="line">    popupWindow.height = recyclerView.height</span><br><span class="line">    popupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))</span><br><span class="line">    <span class="comment">// 为 popupWindow设置锚点</span></span><br><span class="line">    popupWindow.anchorView = view!!.findViewById(R.id.popup_anchor)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// popupWindow 设置为模态弹窗</span></span><br><span class="line">  	popupWindow.isModal = <span class="literal">true</span></span><br><span class="line">    popupWindow.setAdapter(mAdapter)</span><br><span class="line">    popupWindow.setOnItemClickListener &#123; _, _, position, _ -&gt;</span><br><span class="line">        <span class="keyword">if</span> (mAdapter != <span class="literal">null</span>) &#123;</span><br><span class="line">            mAdapter?.setCheckedPosition(position)</span><br><span class="line">            mPresenter.loadPhotos(mAdapter!!.getItem(position))</span><br><span class="line">        &#125;</span><br><span class="line">        popupWindow.dismiss()</span><br><span class="line">    &#125;</span><br><span class="line">    popupWindow.show()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%A8%A1%E6%80%81%E5%AF%B9%E8%AF%9D%E6%A1%86/6449704?fr=aladdin" target="_blank" rel="noopener">【百度百科】</a>模态对话框（Modal Dialogue Box，又叫做<a href="https://baike.baidu.com/item/%E6%A8%A1%E5%BC%8F%E5%AF%B9%E8%AF%9D%E6%A1%86" target="_blank" rel="noopener">模式对话框</a>），是指在用户想要对对话框以外的应用程序进行操作时，必须首先对该对话框进行响应。如单击【确定】或【取消】按钮等将该对话框关闭。</p>
+</blockquote>
+<p>参考：<a href="http://www.jcodecraeer.com/a/opensource/2015/0415/2726.html" target="_blank" rel="noopener">仿微信实现多图选择。支持单选和多选两种模式 </a></p>
+<h2 id="BottomSheetDialog相关"><a href="#BottomSheetDialog相关" class="headerlink" title="BottomSheetDialog相关"></a>BottomSheetDialog相关</h2><h3 id="如何动态设置BottomSheetDialog的高度"><a href="#如何动态设置BottomSheetDialog的高度" class="headerlink" title="如何动态设置BottomSheetDialog的高度"></a>如何动态设置BottomSheetDialog的高度</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 让对话框中的内容全部展示，而不是仅仅显示一部分</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HackyBottomSheetDialog</span></span>(context: Context, theme: <span class="built_in">Int</span>) : BottomSheetDialog(context, theme) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">setContentView</span><span class="params">(layoutResId: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.setContentView(layoutResId)</span><br><span class="line">        hackContentView()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">setContentView</span><span class="params">(view: <span class="type">View</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.setContentView(view)</span><br><span class="line">        hackContentView()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">hackContentView</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> parent = findViewById&lt;View&gt;(R.id.design_bottom_sheet)!!</span><br><span class="line">        <span class="keyword">val</span> behavior = BottomSheetBehavior.from(parent)</span><br><span class="line">        parent.measure(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        behavior.peekHeight = parent.measuredHeight</span><br><span class="line">        <span class="keyword">val</span> params = parent.layoutParams <span class="keyword">as</span> CoordinatorLayout.LayoutParams</span><br><span class="line">        params.gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL</span><br><span class="line">        parent.layoutParams = params</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解决横屏状态下由于内容过长导致在BottomSheetDialog不能完全展示"><a href="#解决横屏状态下由于内容过长导致在BottomSheetDialog不能完全展示" class="headerlink" title="解决横屏状态下由于内容过长导致在BottomSheetDialog不能完全展示"></a>解决横屏状态下由于内容过长导致在BottomSheetDialog不能完全展示</h3><p>用 <code>android.support.v4.widget.NestedScrollView</code>包裹<strong>内容视图</strong>，注意不能用<code>ScrollView</code></p>
+<h3 id="LinearLayoutCompat添加分割线divider"><a href="#LinearLayoutCompat添加分割线divider" class="headerlink" title="LinearLayoutCompat添加分割线divider"></a>LinearLayoutCompat添加分割线divider</h3><h4 id="创建分割线文件"><a href="#创建分割线文件" class="headerlink" title="创建分割线文件"></a>创建分割线文件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"line"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@android:color/white"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 分割线的高度 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:height</span>=<span class="string">"2dip"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置分割线"><a href="#设置分割线" class="headerlink" title="设置分割线"></a>设置分割线</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.LinearLayoutCompat</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:divider</span>=<span class="string">"@drawable/divider"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:showDividers</span>=<span class="string">"middle"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Item 1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">"#fff"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Item 2"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">"#fff"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.v7.widget.LinearLayoutCompat</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p><code>LinearLayoutCompat</code>的<code>app:showDividers=&quot;middle|end|none|beginning&quot;</code> 用来设置分割线显示的位置</p>
+<h1 id="Intent-ACTION相关"><a href="#Intent-ACTION相关" class="headerlink" title="Intent.ACTION相关"></a>Intent.ACTION相关</h1><h2 id="注册Intent-ACTION-VIEW支持所有类型文件的Activity"><a href="#注册Intent-ACTION-VIEW支持所有类型文件的Activity" class="headerlink" title="注册Intent.ACTION_VIEW支持所有类型文件的Activity"></a>注册Intent.ACTION_VIEW支持所有类型文件的Activity</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:name</span>=<span class="string">".ActionViewer"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:configChanges</span>=<span class="string">"orientation"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:exported</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">android:label</span>=<span class="string">"ActionViewer"</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"file"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"*/*"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:scheme</span>=<span class="string">"file"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!--以下代码解决在“邮箱大师”不可见该Activity的bug--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.VIEW"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.BROWSABLE"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span> <span class="attr">android:mimeType</span>=<span class="string">"*/*"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 这里的<code>intent-filter</code>并不是写重了，如果只写第一个，有些APP不会显示这个Activity，<strong>比如TIM的“用其他应用打开*.ai、*.psd文件”</strong>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/summarize-gradle/" rel="next" title="Gradle 3.+ 知识点整理">
+                <i class="fa fa-chevron-left"></i> Gradle 3.+ 知识点整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/08/implement-pdf-reader-on-android/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Zhu Liang" />
+          <p class="site-author-name" itemprop="name">Zhu Liang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#签名-APK-相关问题"><span class="nav-number">1.</span> <span class="nav-text">签名 APK 相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用Android-Studio签名的APK，部分机型安装不上"><span class="nav-number">1.1.</span> <span class="nav-text">用Android Studio签名的APK，部分机型安装不上</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DP与PX转换"><span class="nav-number">2.</span> <span class="nav-text">DP与PX转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DP转PX"><span class="nav-number">2.1.</span> <span class="nav-text">DP转PX</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志留存"><span class="nav-number">3.</span> <span class="nav-text">日志留存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤一：引入依赖"><span class="nav-number">3.1.</span> <span class="nav-text">步骤一：引入依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤二：初始化timber"><span class="nav-number">3.2.</span> <span class="nav-text">步骤二：初始化timber</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤三：打印log"><span class="nav-number">3.3.</span> <span class="nav-text">步骤三：打印log</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UI-相关"><span class="nav-number">4.</span> <span class="nav-text">UI 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PopupWindow相关"><span class="nav-number">4.1.</span> <span class="nav-text">PopupWindow相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#仿微信弹出相册选择页面"><span class="nav-number">4.1.1.</span> <span class="nav-text">仿微信弹出相册选择页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BottomSheetDialog相关"><span class="nav-number">4.2.</span> <span class="nav-text">BottomSheetDialog相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何动态设置BottomSheetDialog的高度"><span class="nav-number">4.2.1.</span> <span class="nav-text">如何动态设置BottomSheetDialog的高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决横屏状态下由于内容过长导致在BottomSheetDialog不能完全展示"><span class="nav-number">4.2.2.</span> <span class="nav-text">解决横屏状态下由于内容过长导致在BottomSheetDialog不能完全展示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinearLayoutCompat添加分割线divider"><span class="nav-number">4.2.3.</span> <span class="nav-text">LinearLayoutCompat添加分割线divider</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建分割线文件"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">创建分割线文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置分割线"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">设置分割线</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Intent-ACTION相关"><span class="nav-number">5.</span> <span class="nav-text">Intent.ACTION相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册Intent-ACTION-VIEW支持所有类型文件的Activity"><span class="nav-number">5.1.</span> <span class="nav-text">注册Intent.ACTION_VIEW支持所有类型文件的Activity</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhu Liang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

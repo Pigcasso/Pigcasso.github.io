@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前言Android原生支持PDF并不友好，API 19 开始原生支持创建PDF文件：PdfDocument。API 21 开始支持PDF渲染成：PdfRenderer。如果APP想要支持较低版本的Android系统，只能考虑第三方库了。 需求 左右翻页 页面支持缩放、平移 暂不需要搜索、复制、编辑  MuPDF大多数免费开源库都仅仅提供了PDF预览功能，除了MuPDF以外还调研过  pspdfki">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Now Or Never!!">
+<meta property="og:url" content="http://zhuliang.io/2018/03/08/implement-pdf-reader-on-android/index.html">
+<meta property="og:site_name" content="Now Or Never!!">
+<meta property="og:description" content="前言Android原生支持PDF并不友好，API 19 开始原生支持创建PDF文件：PdfDocument。API 21 开始支持PDF渲染成：PdfRenderer。如果APP想要支持较低版本的Android系统，只能考虑第三方库了。 需求 左右翻页 页面支持缩放、平移 暂不需要搜索、复制、编辑  MuPDF大多数免费开源库都仅仅提供了PDF预览功能，除了MuPDF以外还调研过  pspdfki">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://artifex.com/wp-content/uploads/2017/01/compressive.png">
+<meta property="og:updated_time" content="2018-04-08T01:09:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Now Or Never!!">
+<meta name="twitter:description" content="前言Android原生支持PDF并不友好，API 19 开始原生支持创建PDF文件：PdfDocument。API 21 开始支持PDF渲染成：PdfRenderer。如果APP想要支持较低版本的Android系统，只能考虑第三方库了。 需求 左右翻页 页面支持缩放、平移 暂不需要搜索、复制、编辑  MuPDF大多数免费开源库都仅仅提供了PDF预览功能，除了MuPDF以外还调研过  pspdfki">
+<meta name="twitter:image" content="https://artifex.com/wp-content/uploads/2017/01/compressive.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhuliang.io/2018/03/08/implement-pdf-reader-on-android/"/>
+
+
+
+
+
+  <title> | Now Or Never!!</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Now Or Never!!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuliang.io/2018/03/08/implement-pdf-reader-on-android/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhu Liang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Now Or Never!!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-08T00:00:00+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Android原生支持PDF并不友好，API 19 开始原生支持创建PDF文件：<code>PdfDocument</code>。API 21 开始支持PDF渲染成：<code>PdfRenderer</code>。如果APP想要支持较低版本的Android系统，只能考虑第三方库了。</p>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
+<li>左右翻页</li>
+<li>页面支持缩放、平移</li>
+<li><del>暂不需要搜索、复制、编辑</del></li>
+</ol>
+<h1 id="MuPDF"><a href="#MuPDF" class="headerlink" title="MuPDF"></a>MuPDF</h1><p>大多数免费开源库都仅仅提供了PDF预览功能，除了<a href="https://www.MuPDF.com/" target="_blank" rel="noopener">MuPDF</a>以外还调研过  <a href="https://pspdfkit.com/" target="_blank" rel="noopener">pspdfkit</a> ，由于价格原因最终放弃。</p>
+<p><img src="https://artifex.com/wp-content/uploads/2017/01/compressive.png" alt=""></p>
+<h2 id="MuPDF支持的特性："><a href="#MuPDF支持的特性：" class="headerlink" title="MuPDF支持的特性："></a><a href="http://artifex.com/mupdf-technical-information/#sub-item-3" target="_blank" rel="noopener">MuPDF支持的特性</a>：</h2><h3 id="Viewer-Features"><a href="#Viewer-Features" class="headerlink" title="Viewer Features"></a>Viewer Features</h3><p>MuPDF Viewer provides the following features and functionality:</p>
+<ul>
+<li>Continuous scroll</li>
+<li>Horizontal scroll</li>
+<li>Vertical scroll</li>
+<li>Two pages at once</li>
+<li>Show/hide links</li>
+<li>Pinch zoom</li>
+<li>Tap-to-zoom</li>
+<li>Thumbnails</li>
+<li>Multiple documents</li>
+<li>Table of contents outline</li>
+<li>Go to page</li>
+<li>Invert colors</li>
+<li>Greyscale</li>
+</ul>
+<h3 id="Interactive-pdf-features"><a href="#Interactive-pdf-features" class="headerlink" title="Interactive pdf features"></a>Interactive pdf features</h3><h4 id="Annotations"><a href="#Annotations" class="headerlink" title="Annotations"></a>Annotations</h4><p>MuPDF provides a wide range of annotation features to work with and choose from. Full list of annotations:</p>
+<ul>
+<li>Text</li>
+<li>Link</li>
+<li>FreeText</li>
+<li>Callout style</li>
+<li>Line</li>
+<li>Square</li>
+<li>Circle</li>
+<li>Polygon</li>
+<li>PolyLine</li>
+</ul>
+<ul>
+<li>Highlight</li>
+<li>Underline</li>
+<li>Squiggly</li>
+<li>Color, Font, etc.</li>
+<li>Strikeout</li>
+<li>Stamp</li>
+<li>Caret</li>
+<li>Ink</li>
+<li>Popup</li>
+</ul>
+<ul>
+<li>File Attachment</li>
+<li>Sound</li>
+<li>Widget (forms)</li>
+<li>Select</li>
+<li>Delete</li>
+<li>Undo/Redo</li>
+<li>Annotate Programmatically</li>
+</ul>
+<h3 id="Other-Interactive-Features"><a href="#Other-Interactive-Features" class="headerlink" title="Other Interactive Features"></a>Other Interactive Features</h3><p>MuPDF supports:</p>
+<ul>
+<li>Form filling</li>
+<li>Digital signatures</li>
+<li>Hyperlinks</li>
+<li>Text reflow</li>
+<li>Text search</li>
+</ul>
+<ul>
+<li>Copy text</li>
+<li>Page reorder</li>
+<li>Page rotate</li>
+<li>Add page</li>
+<li>Delete page</li>
+</ul>
+<p>虽然MuPDF支持这么多功能，但是并没有在他们发布的APP（从Google Play）里完全展示出来，而且UI过于丑陋。MuPDF支持的功能其实是核心渲染库支持的功能，渲染库是用标准C语言写的，可以跨平台。</p>
+<blockquote>
+<h3 id="Platforms-Supported"><a href="#Platforms-Supported" class="headerlink" title="Platforms Supported"></a>Platforms Supported</h3><p>Because it is open source and highly portable, MuPDF is supported on any<br> platform that offers a standard C compiler. This includes the following<br> operating platforms:</p>
+<p>iOS</p>
+<p>Android</p>
+<p>MS Windows</p>
+<p>macOS</p>
+<p>Linux</p>
+<p>UNIX-like systems (e.g., OpenBSD, FreeBSD)</p>
+</blockquote>
+<h2 id="Android应用MuPDF"><a href="#Android应用MuPDF" class="headerlink" title="Android应用MuPDF"></a>Android应用MuPDF</h2><p><a href="https://github.com/ArtifexSoftware/mupdf-android-viewer-mini" target="_blank" rel="noopener">mupdf-android-viewer-mini</a> 是比较新的Example版本，通过读源码学习MuPDF的使用。</p>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p><code>com.artifex.mupdf:fitz</code>是MuPDF对jni的封装。如果想要完全重写PDF应用可以引用这个依赖。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.artifex.mupdf:fitz:1.12.0'</span></span><br></pre></td></tr></table></figure>
+<p><code>com.artifex.mupdf:mini</code> 这个库除了引用<code>com.artifex.mupdf:fitz</code>之外，还提供了简单的PDF预览页面：<code>DocumentActivity</code>。UI过于简陋，可以读源码了解MuPDF的使用方法。以下章节就是通过读<code>DocumentActivity</code>学习到的使用MuPDF的流程。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.artifex.mupdf:mini:1.12.0'</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取文件"><a href="#获取文件" class="headerlink" title="获取文件"></a>获取文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Uri uri = getIntent().getData();</span><br><span class="line">String path;</span><br><span class="line"><span class="keyword">byte</span>[] buffer;</span><br><span class="line"><span class="keyword">if</span> (uri.getScheme().equals(<span class="string">"file"</span>)) &#123;</span><br><span class="line">  <span class="comment">// 获取文档的绝对路径</span></span><br><span class="line">   path = uri.getPath();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    InputStream stm = getContentResolver().openInputStream(uri);</span><br><span class="line">    ByteArrayOutputStream out = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">    <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">16384</span>];</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span> ((n = stm.read(buf)) != -<span class="number">1</span>)</span><br><span class="line">      out.write(buf, <span class="number">0</span>, n);</span><br><span class="line">    out.flush();</span><br><span class="line">    <span class="comment">// 获取文档的字节数组</span></span><br><span class="line">    buffer = out.toByteArray();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IOException x) &#123;</span><br><span class="line">    Log.e(APP, x.toString());</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, x.getMessage(), Toast.LENGTH_SHORT).show();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="打开PDF文档"><a href="#打开PDF文档" class="headerlink" title="打开PDF文档"></a>打开PDF文档</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Document.java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> filename 文件的绝对路径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Document <span class="title">openDocument</span><span class="params">(String filename)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> buffer 文件的字节数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> magic  文件的mimeType</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Document <span class="title">openDocument</span><span class="params">(<span class="keyword">byte</span>[] buffer, String magic)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>获取到PDF文档实例<code>Document</code>后，需要先调用<code>Document.needsPassword()</code>方法判断是否设置了密码，如果设置了密码，需要用户输入密码，然后调用<code>Document.authenticatePassword(String)</code>输入密码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Document.java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * PDF文档是否设置了密码 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">boolean</span> <span class="title">needsPassword</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输入密码</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 密码正确返回true，密码错误返回false</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">boolean</span> <span class="title">authenticatePassword</span><span class="params">(String var1)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="加载PDF文档"><a href="#加载PDF文档" class="headerlink" title="加载PDF文档"></a>加载PDF文档</h3><p>参考<code>DocumentActivity.loadDocument()</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Document.java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取文档的元数据</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> META_INFO_AUTHOR 获取文档的作者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> META_INFO_TITLE  获取文档的标题</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">getMetaData</span><span class="params">(String var1)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 是否进入重新格式化模式(可能是用html的方式渲染文档)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">boolean</span> <span class="title">isReflowable</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="加载PDF文档的页面"><a href="#加载PDF文档的页面" class="headerlink" title="加载PDF文档的页面"></a>加载PDF文档的页面</h3><p>参考<code>DocumentActivity.loadPage()</code>。</p>
+<p>获取PDF文档页面<code>Page</code>实例的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Document.java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据页码获取PDF文档页面</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> var1 页码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> Page <span class="title">loadPage</span><span class="params">(<span class="keyword">int</span> var1)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AndroidDrawDevice.java</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">drawPageFit</span><span class="params">(Page page, <span class="keyword">int</span> fitW, <span class="keyword">int</span> fitH)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">drawPage</span><span class="params">(Page page, <span class="keyword">float</span> dpi, <span class="keyword">int</span> rotate)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">drawPage</span><span class="params">(Page page, <span class="keyword">float</span> dpi)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">drawPageFit</span><span class="params">(Page page, <span class="keyword">int</span> fitW, <span class="keyword">int</span> fitH)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">drawPageFitWidth</span><span class="params">(Page page, <span class="keyword">int</span> fitW)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将 Page 转成 Bitmap 的核心方法，上面的方法最后都是调用的这个方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">drawPage</span><span class="params">(Page page, Matrix ctm)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Page.java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取页面中的链接</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">native</span> Link[] getLinks();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取页面中搜索结果的位置 </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> var1 搜索的关键字</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">native</span> Rect[] search(String var1);</span><br></pre></td></tr></table></figure>
+<h3 id="加载PDF文档的大纲"><a href="#加载PDF文档的大纲" class="headerlink" title="加载PDF文档的大纲"></a>加载PDF文档的大纲</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Document.java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取文档的大纲</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">native</span> Outline[] loadOutline();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/summarize-product-of-my-company/" rel="next" title="公司产品知识点整理">
+                <i class="fa fa-chevron-left"></i> 公司产品知识点整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/11/fragment-tab-host-icon-text-tab/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Zhu Liang" />
+          <p class="site-author-name" itemprop="name">Zhu Liang</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.1.</span> <span class="nav-text">需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MuPDF"><span class="nav-number">2.</span> <span class="nav-text">MuPDF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MuPDF支持的特性："><span class="nav-number">2.1.</span> <span class="nav-text">MuPDF支持的特性：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Viewer-Features"><span class="nav-number">2.1.1.</span> <span class="nav-text">Viewer Features</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interactive-pdf-features"><span class="nav-number">2.1.2.</span> <span class="nav-text">Interactive pdf features</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Annotations"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Annotations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Interactive-Features"><span class="nav-number">2.1.3.</span> <span class="nav-text">Other Interactive Features</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Platforms-Supported"><span class="nav-number">2.1.4.</span> <span class="nav-text">Platforms Supported</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android应用MuPDF"><span class="nav-number">2.2.</span> <span class="nav-text">Android应用MuPDF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖"><span class="nav-number">2.2.1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文件"><span class="nav-number">2.2.2.</span> <span class="nav-text">获取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开PDF文档"><span class="nav-number">2.2.3.</span> <span class="nav-text">打开PDF文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载PDF文档"><span class="nav-number">2.2.4.</span> <span class="nav-text">加载PDF文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载PDF文档的页面"><span class="nav-number">2.2.5.</span> <span class="nav-text">加载PDF文档的页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载PDF文档的大纲"><span class="nav-number">2.2.6.</span> <span class="nav-text">加载PDF文档的大纲</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhu Liang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
