@@ -1,0 +1,82 @@
+[
+  {
+    "title": "唯美图片",
+    "url": "http://www.umei.cc/",
+    "logo": "",
+    "listImg": "class.TypeList@tag.li",
+    "itemImgName": "tag.span@text",
+    "itemImgUrl": "tag.img.0@src",
+    "pageUrl": "tag.a@href",
+    "totalPage": "class.NewPages@tag.li.-1@tag.a@href#.htm",
+    "pageImgUrl": "class.ImageBody@tag.img@src",
+    "pageNextUrl": "class.NewPages@tag.li.-1@tag.a@href",
+    "pageTotalImg": "class.NewPages@tag.li.0@text#((共)|(页)",
+    "tabs": [
+      {
+        "title": "壁纸图片",
+        "url": "bizhitupian/{index}.htm"
+      },
+      {
+        "title": "唯美图片",
+        "url": "weimeitupian/{index}.htm"
+      },
+      {
+        "title": "头像图片",
+        "url": "touxiangtupian/{index}.htm"
+      },
+      {
+        "title": "搞笑图片",
+        "url": "gaoxiaotupian/{index}.htm"
+      },
+      {
+        "title": "动画图片",
+        "url": "katongdongman/{index}.htm"
+      },
+      {
+        "title": "风景图片",
+        "url": "tupiandaquan/fengjingtupian/{index}.htm"
+      }
+    ]
+  },
+  {
+    "title": "犯贱志",
+    "url": "http://www.fanjian.net/",
+    "logo": "http://www.fanjian.net/favicon.ico",
+    "listImg": "class.main@class.b@tag.li",
+    "itemImgName": "class.cont-list-title@tag.a@text",
+    "itemImgUrl": "class.cont-list-main@class.lazy@data-src",
+    "pageUrl": "class.cont-list-title@tag.a.0@href",
+    "totalPage": "class.pager@tag.span@text#((共)|(页，跳至))",
+    "pageImgUrl": "class.view-main@tag.img@src",
+    "pageNextUrl": "class.view-quickpager@tag.a.-1@href",
+    "tabs": [
+      {
+        "title": "首页",
+        "url": "latest-{index}",
+        "listImg": "class.box@class.b@tag.li",
+        "itemImgName": "class.cont-list-title@tag.a@text",
+        "itemImgUrl": "class.lazy@data-src",
+        "pageUrl": "class.cont-list-title@tag.a.0@href",
+        "totalPage": "class.pager@tag.span@text#((共)|(页，跳至))",
+        "pageImgUrl": "class.view-main@tag.img@src",
+        "pageNextUrl": "class.view-quickpager@tag.a.-1@href"
+      },
+      {
+        "title": "贱文",
+        "url": "jianwen-{index}"
+      },
+      {
+        "title": "贱图",
+        "url": "jiantu-{index}"
+      },
+      {
+        "title": "贱影",
+        "url": "jianying-{index}"
+      },
+      {
+        "title": "贱玩",
+        "url": "jianwan-{index}"
+      }
+    ]
+  }
+]
