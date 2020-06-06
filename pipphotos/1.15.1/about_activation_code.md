@@ -1,5 +1,3 @@
-[toc]
-
 目录
 
 ```
@@ -17,9 +15,4 @@
 
 
 
-<a href="#5F">锚点5</a>
-
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-
-<a name="5F">1111111</a>
-
+如有其他问题请<a href="../1.14.3/join_wechat_group.html">加入果仁相册微信群</a>或者<a href="mailto:liamju@163.com">发送邮件</a>联系开发者。
